@@ -1,0 +1,142 @@
+package com.photon.phresco.hybrid.eshop.activity;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Properties;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.os.Bundle;
+
+import com.phonegap.DroidGap;
+import com.photon.phresco.hybrid.config.ConfigReader;
+import com.photon.phresco.hybrid.config.Configuration;
+import com.photon.phresco.hybrid.eshop.core.Constants;
+import com.photon.phresco.hybrid.eshop.logger.PhrescoLogger;
+import com.photon.phresco.hybrid.eshop.util.Utility;
+
+public class MainActivity extends DroidGap {
+
+	private static final String TAG = "HomeActivity ******* ";
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		try {
+			super.onCreate(savedInstanceState);
+			initApplicationEnvironment();
+			readConfigXML();
+			PhrescoLogger.info(TAG + " onCreate()");
+			// super.clearCache();
+			super.loadUrl(Constants.getWebContextURL() + Constants.getHomeURL());
+		} catch (Exception ex) {
+			PhrescoLogger.info(TAG + " onCreate -  Exception " + ex);
+			PhrescoLogger.warning(ex);
+		}
+
+	}
+
+	/**
+	 * Create the required folder structures on external storage Read the device
+	 * information
+	 */
+	private void initApplicationEnvironment() {
+
+		try {
+			// Delete existing log file, when application starts, so the log
+			// file doesn't consume more place on external device
+			Utility.deleteLogFile();
+
+			// Create all the directories required for this application
+			Utility.createRequiredDirectory();
+
+			// Get the device information
+			Utility.getDeviceInfo();
+
+		} catch (Exception ex) {
+			PhrescoLogger.info(TAG
+					+ " initApplicationEnvironment -  Exception "
+					+ ex.toString());
+			PhrescoLogger.warning(ex);
+		}
+	}
+
+	/**
+	 * Read phresco-env-config.xml file to get to connect to web service
+	 */
+	public void readConfigXML() {
+		try {
+
+			String protocol = "protocol";
+			String host = "host";
+			String port = "port";
+			String context = "context";
+			Resources resources = getResources();
+			AssetManager assetManager = resources.getAssets();
+			Properties properties = new Properties();
+
+			// Read from the /assets directory
+			InputStream inputStream = assetManager.open(Constants.PHRESCO_ENV_CONFIG);
+			ConfigReader confReaderObj = new ConfigReader(inputStream);
+			PhrescoLogger.info(TAG + "Default ENV = "
+					+ confReaderObj.getDefaultEnvName());
+			List<Configuration> configByEnv = confReaderObj
+					.getConfigByEnv(confReaderObj.getDefaultEnvName());
+
+			for (Configuration configuration : configByEnv) {
+				properties = configuration.getProperties();
+				PhrescoLogger.info(TAG + "config value = "
+						+ configuration.getProperties());
+				String webServiceProtocol = properties.getProperty(protocol)
+						.endsWith("://") ? properties.getProperty(protocol)
+						: properties.getProperty(protocol) + "://"; // http://
+
+				String webServiceHost = properties.getProperty(port)
+						.equalsIgnoreCase("") ? (properties.getProperty(host)
+						.endsWith("/") ? properties.getProperty(host)
+						: properties.getProperty(host) + "/") : properties
+						.getProperty(host); // localhost/
+											// localhost
+
+				String webServicePort = properties.getProperty(port)
+						.equalsIgnoreCase("") ? "" : (properties.getProperty(
+						port).startsWith(":") ? properties.getProperty(port)
+						: ":" + properties.getProperty(port)); // "" (blank)
+																// :1313
+
+				String webServiceContext = properties.getProperty(context)
+						.startsWith("/") ? properties.getProperty(context)
+						: "/" + properties.getProperty(context); // /phresco
+
+				Constants.setWebContextURL(webServiceProtocol + webServiceHost
+						+ webServicePort + webServiceContext + "/");
+
+				PhrescoLogger.info(TAG + "Constants.webContextURL : "
+						+ Constants.getWebContextURL());
+			}
+
+		} catch (ParserConfigurationException ex) {
+			PhrescoLogger.info(TAG
+					+ "readConfigXML : ParserConfigurationException: "
+					+ ex.toString());
+			PhrescoLogger.warning(ex);
+		} catch (SAXException ex) {
+			PhrescoLogger.info(TAG + "readConfigXML : SAXException: "
+					+ ex.toString());
+			PhrescoLogger.warning(ex);
+		} catch (IOException ex) {
+			PhrescoLogger.info(TAG + "readConfigXML : IOException: "
+					+ ex.toString());
+			PhrescoLogger.warning(ex);
+		} catch (Exception ex) {
+			PhrescoLogger.info(TAG + "readConfigXML : Exception: "
+					+ ex.toString());
+			PhrescoLogger.warning(ex);
+		}
+	}
+}

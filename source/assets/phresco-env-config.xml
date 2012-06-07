@@ -1,0 +1,14 @@
+<environments>
+	<environment default="true" desc="Production Environment is used for Development purpose only" name="Production">
+		<Server name="server">
+            <protocol>http</protocol>
+            <host>172.16.17.180</host>
+            <port>8080</port>
+            <username/>
+            <password/>
+            <deploy_dir>c:/</deploy_dir>
+            <type>nodejs</type>
+            <context>mobilewidget</context>
+        </Server>
+	</environment>
+</environments>
