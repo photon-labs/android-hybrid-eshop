@@ -48,6 +48,7 @@ public class MainActivity extends DroidGap {
 	public void onCreate(Bundle savedInstanceState) {
 		try {
 			super.onCreate(savedInstanceState);
+			setIntegerProperty("loadUrlTimeoutValue", 5 * 60 * 1000);
 			initApplicationEnvironment();
 			readConfigXML();
 			PhrescoLogger.info(TAG + " onCreate()");
@@ -95,6 +96,7 @@ public class MainActivity extends DroidGap {
 			String host = "host";
 			String port = "port";
 			String context = "context";
+			String additionalContext = "additional_context";
 			Resources resources = getResources();
 			AssetManager assetManager = resources.getAssets();
 			Properties properties = new Properties();
@@ -132,8 +134,24 @@ public class MainActivity extends DroidGap {
 						.startsWith("/") ? properties.getProperty(context)
 						: "/" + properties.getProperty(context); // /phresco
 
-				Constants.setWebContextURL(webServiceProtocol + webServiceHost
-						+ webServicePort + webServiceContext + "/");
+				String webServiceAdditionalContext = null;
+						
+				try {
+					webServiceAdditionalContext = properties.getProperty(additionalContext)
+							.startsWith("/") ? properties.getProperty(additionalContext)
+							: "/" + properties.getProperty(additionalContext);
+				} catch (Exception e) {
+					webServiceAdditionalContext = null;
+				}
+						
+						
+				if(webServiceAdditionalContext != null && webServiceAdditionalContext.length() > 1) {// > 1 beacuse of "/"
+					Constants.setWebContextURL(webServiceProtocol + webServiceHost
+							+ webServicePort + webServiceContext + webServiceAdditionalContext + "&userAgent=android");
+				} else {
+					Constants.setWebContextURL(webServiceProtocol + webServiceHost
+							+ webServicePort + webServiceContext + "?userAgent=android");
+				}
 
 				PhrescoLogger.info(TAG + "Constants.webContextURL : "
 						+ Constants.getWebContextURL());
