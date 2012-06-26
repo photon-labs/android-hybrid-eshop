@@ -1,62 +1,84 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.photon.phresco.eShop</groupId>
-  <artifactId>phresco-test</artifactId>
-  <packaging>apk</packaging>
-  <name>eShop - Test</name>
-  <version>1.2.0.3001-SNAPSHOT</version>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <groupId>com.photon.maven.plugins.android.generation2</groupId>
-        <artifactId>android-maven-plugin</artifactId>
-        <version>1.2.0.3001-SNAPSHOT</version>
-        <extensions>true</extensions>
-        <configuration>
-          <run>
-            <debug>true</debug>
-          </run>
-          <sdk>
-            <platform>${android.version}</platform>
-          </sdk>
-          <extractDuplicates>true</extractDuplicates>
-          <undeployBeforeDeploy>true</undeployBeforeDeploy>
-          <androidManifestFile>AndroidManifest.xml</androidManifestFile>
-          <resourceDirectory>res</resourceDirectory>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <dependencies>
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android-test</artifactId>
-      <version>2.3.3</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android</artifactId>
-      <version>${android.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.jayway.android.robotium</groupId>
-      <artifactId>robotium-solo</artifactId>
-      <version>3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.1</version>
-    </dependency>
-  </dependencies>
-  <properties>
-    <android.version>4.0.3</android.version>
-  </properties>
-</project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.photon.phresco</groupId>
+	<artifactId>HTML5Mobile_WebDriver</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<name>HTML5Mobile_Widget</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- <repositories>
+		<repository>
+			<id>seleniumserver</id>
+			<name>seleniumserver</name>
+			<url>http://172.16.18.178:8080/nexus/content/groups/public/</url>
+		</repository>
+	</repositories -->>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium.server</groupId>
+			<artifactId>selenium-webdriver</artifactId>
+			<version>2.19.0</version>
+		</dependency>
+</dependencies>
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>site</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.8</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<reporting>
 		<plugins>
