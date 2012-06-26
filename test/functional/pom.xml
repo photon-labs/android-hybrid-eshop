@@ -14,7 +14,7 @@
 			<name>seleniumserver</name>
 			<url>http://172.16.18.178:8080/nexus/content/groups/public/</url>
 		</repository>
-	</repositories -->>
+	</repositories> -->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
