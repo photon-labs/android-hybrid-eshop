@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util
+END
+ExtractExeToLocalMachine.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/ExtractExeToLocalMachine.java
+END
+GetCurrentDir.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/GetCurrentDir.java
+END
+ScreenActionFailedException.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/ScreenActionFailedException.java
+END
+ScreenshottingSelenium.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/ScreenshottingSelenium.java
+END
+ProcessWaiter.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/ProcessWaiter.java
+END
+Constants.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/Constants.java
+END
+ScreenException.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/repos/phresco-projects/!svn/ver/3293/trunk/html5-mobile-widget/eshop/test/functional/src/main/java/com/photon/phresco/selenium/util/ScreenException.java
+END
