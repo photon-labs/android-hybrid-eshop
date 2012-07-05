@@ -37,6 +37,7 @@ import com.photon.phresco.hybrid.config.ConfigReader;
 import com.photon.phresco.hybrid.config.Configuration;
 import com.photon.phresco.hybrid.eshop.core.Constants;
 import com.photon.phresco.hybrid.eshop.logger.PhrescoLogger;
+import com.photon.phresco.hybrid.eshop.util.ConnectivityMessaging;
 import com.photon.phresco.hybrid.eshop.util.Utility;
 
 public class MainActivity extends DroidGap {
@@ -52,6 +53,12 @@ public class MainActivity extends DroidGap {
 			initApplicationEnvironment();
 			readConfigXML();
 			PhrescoLogger.info(TAG + " onCreate()");
+			if(!ConnectivityMessaging.checkNetworkConnectivity(this)){
+				ConnectivityMessaging.showNetworkConectivityAlert(this);
+			}
+			else if(!ConnectivityMessaging.checkURLStatus(Constants.getWebContextURL() + Constants.getHomeURL())){
+				ConnectivityMessaging.showServiceAlert(this);
+			}
 			// super.clearCache();
 			super.loadUrl(Constants.getWebContextURL() + Constants.getHomeURL());
 		} catch (Exception ex) {
