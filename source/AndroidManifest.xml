@@ -23,7 +23,8 @@
     package="com.photon.phresco.hybrid"
     android:versionCode="1"
     android:versionName="1.0" 
-	android:windowSoftInputMode="adjustPan" >
+	android:windowSoftInputMode="adjustPan"
+	android:installLocation="auto" >
 
     <supports-screens
         android:anyDensity="true"
