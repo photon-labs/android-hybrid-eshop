@@ -32,7 +32,8 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 
-import com.phonegap.DroidGap;
+import org.apache.cordova.DroidGap;
+
 import com.photon.phresco.hybrid.config.ConfigReader;
 import com.photon.phresco.hybrid.config.Configuration;
 import com.photon.phresco.hybrid.eshop.core.Constants;

@@ -22,7 +22,7 @@ package com.photon.phresco.hybrid.activity;
 
 import android.os.Bundle;
 
-import com.phonegap.DroidGap;
+import org.apache.cordova.DroidGap;
 
 public class MainActivity extends DroidGap {
     /** Called when the activity is first created. */
