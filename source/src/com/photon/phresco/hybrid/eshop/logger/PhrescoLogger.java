@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_AndroidHybrid
+ * PHR_AndroidNative
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -40,7 +40,7 @@ import com.photon.phresco.hybrid.eshop.core.Constants;
  */
 public class PhrescoLogger {
 
-	private static Logger logger = Logger.getLogger("eShop-Hybrid");
+	private static Logger logger = Logger.getLogger("eShop-Native");
 	private static FileHandler fh;
 
 	private static String exception = "exception";

@@ -21,17 +21,15 @@ package com.photon.phresco.hybrid.eshop.activity;
 
 import android.os.Bundle;
 
-import com.phonegap.DroidGap;
-import com.photon.phresco.hybrid.config.EnvConstuctor;
 import com.photon.phresco.hybrid.eshop.core.Constants;
 import com.photon.phresco.hybrid.eshop.logger.PhrescoLogger;
-import com.photon.phresco.hybrid.eshop.util.ConnectivityMessaging;
+import com.photon.phresco.hybrid.eshop.net.NetworkManager;
 import com.photon.phresco.hybrid.eshop.util.Utility;
 
-public class MainActivity extends DroidGap {
+public class MainActivity extends PhrescoActivity {
 
 	private static final String TAG = "HomeActivity ******* ";
-	private static final String SERVER_CONFIG_NAME = "server";
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,13 +37,16 @@ public class MainActivity extends DroidGap {
 			super.onCreate(savedInstanceState);
 			setIntegerProperty("loadUrlTimeoutValue", 5 * 60 * 1000);
 			initApplicationEnvironment();
-			buildEnvData();
+			//buildEnvData();
+			readConfigXML();
 			PhrescoLogger.info(TAG + " onCreate()");
-			if(!ConnectivityMessaging.checkNetworkConnectivity(this)){
-				ConnectivityMessaging.showNetworkConectivityAlert(this);
-			}
-			else if(!ConnectivityMessaging.checkURLStatus(Constants.getWebContextURL() + Constants.getHomeURL())){
-				ConnectivityMessaging.showServiceAlert(this);
+			if (!NetworkManager.checkNetworkConnectivity(this)) {
+				NetworkManager.showNetworkConectivityAlert(this);
+				return;
+			} else if (!NetworkManager.checkURLStatus(Constants
+					.getWebContextURL() + Constants.getHomeURL())) {
+				NetworkManager.showServiceAlert(this);
+				return;
 			}
 			// super.clearCache();
 			super.loadUrl(Constants.getWebContextURL() + Constants.getHomeURL());
@@ -55,12 +56,7 @@ public class MainActivity extends DroidGap {
 		}
 
 	}
-	//Below code is used for reading web service URL from Phresco configuration menu
-	private void buildEnvData() {
-		EnvConstuctor envConstuctor = new EnvConstuctor(getResources());
-		Constants.setWebContextURL(envConstuctor.getServerURL(SERVER_CONFIG_NAME));
-		
-	}
+
 	/**
 	 * Create the required folder structures on external storage Read the device
 	 * information
@@ -85,4 +81,6 @@ public class MainActivity extends DroidGap {
 			PhrescoLogger.warning(ex);
 		}
 	}
+	
+	
 }

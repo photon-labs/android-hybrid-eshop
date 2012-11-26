@@ -22,4 +22,6 @@
 <resources>
     <string name="hello">Hello World, PhoneGapTestActivity!</string>
     <string name="app_name">EShop</string>
+    <string name="network_error">Network is not available.. Check your network settings</string>
+	<string name="service_error">Service is not available</string>
 </resources>
