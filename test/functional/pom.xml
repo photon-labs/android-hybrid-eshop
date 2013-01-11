@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.photon.phresco</groupId>
   <artifactId>Android_Hybrid_Testcases</artifactId>
-  <version>2.0.0.32001-SNAPSHOT</version>
+  <version>2.0.0.32002-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>HTML5Mobile_Widget</name>
   <url>http://maven.apache.org</url>
