@@ -26,7 +26,11 @@
 			
 			<plugin>
 				<groupId>com.photon.phresco.plugins</groupId>
+<<<<<<< Updated upstream
 				<artifactId>HybridAppLauncher-maven-plugin</artifactId>
+=======
+				<artifactId>hybridAppLauncher-maven-plugin</artifactId>
+>>>>>>> Stashed changes
 				<version>2.0.0.34002-SNAPSHOT</version>
 				<executions>
 					<execution>	
