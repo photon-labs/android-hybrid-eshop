@@ -27,7 +27,7 @@
 			<plugin>
 				<groupId>com.photon.phresco.plugins</groupId>
 				<artifactId>hybridAppLauncher-maven-plugin</artifactId>
-				<version>2.0.0.36004-SNAPSHOT</version>
+				<version>2.0.0.37001-SNAPSHOT</version>
 				<executions>
 					<execution>	
 						<phase>test</phase>
