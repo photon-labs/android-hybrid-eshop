@@ -55,10 +55,10 @@
 								<property name="ANDROID_HOME" value="${env.ANDROID_HOME}"/> 
 								<taskdef name="run" classname="com.gorillalogic.monkeytalk.ant.RunTask" classpathref="maven.compile.classpath" />
 								 <run agent="AndroidEmulator"
-								  adb="${ANDROID_HOME}/platform-tools/adb.exe"
+								  adb="${ANDROID_HOME}/${adb.path}"
 								  script="${basedir}/src/AllTest.mts"
 								  reportdir="${basedir}/target/surefire-reports"
-								  adbSerial="emulator-5554"
+								   adbSerial="emulator-5554"
 								  thinktime="100"
 								  timeout="5000"
 								  verbose="true" /> 
@@ -69,4 +69,55 @@
             </plugin> 
         </plugins>
     </build>
+	
+	<profiles>
+            <profile>
+                <id>windows-x86</id>
+                <activation>
+                    <os>
+                        <family>Windows</family>
+                    </os>
+                </activation>
+                <properties>
+                     <adb.path>/platform-tools/adb.exe</adb.path>
+                </properties>
+            </profile>
+            <profile>
+                <id>Linux-32bit</id>
+                <activation>
+                    <os>
+                        <family>unix</family>
+                        <name>Linux</name>
+                        <arch>i386</arch>
+                    </os>
+                </activation>
+                <properties>
+                   <adb.path>/platform-tools/adb</adb.path>
+                </properties>
+            </profile>
+            <profile>
+                <id>Linux-64bit</id>
+                <activation>
+                    <os>
+                        <family>unix</family>
+                        <name>Linux</name>
+                        <arch>x64</arch>
+                    </os>
+                </activation>
+                <properties>
+                    <adb.path>/platform-tools/adb</adb.path>
+                </properties>
+            </profile>
+            <profile>
+                <id>mac</id>
+                <activation>
+                    <os>
+                        <family>mac</family>
+                    </os>
+                </activation>
+                <properties>
+                   <adb.path>/platform-tools/adb</adb.path>
+                </properties>
+            </profile>
+        </profiles>
 </project>
