@@ -9,6 +9,7 @@
 	
 	
 	  <properties>
+	      <sonar.language>js</sonar.language>
 		  <phresco.test.package>com.photon.phresco.hybrid</phresco.test.package>
 	  </properties>
 	  
@@ -22,6 +23,7 @@
     </dependencies>
 	
 	<build>
+	<sourceDirectory>src/js</sourceDirectory>
 		<plugins>
 			
 			<plugin>
