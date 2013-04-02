@@ -1,126 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.photon.phresco.performance.database</groupId>
-    <artifactId>PHR_AndroidHybrib</artifactId>
-    <packaging>pom</packaging>
-    <name>PHR_AndroidHybrib</name>
-    <version>1.0.0</version>
-	
-	
-	  <properties>
-	      <sonar.language>js</sonar.language>
-		  <phresco.test.package>com.photon.phresco.hybrid</phresco.test.package>
-	  </properties>
-	  
-	<dependencies>
-		<dependency>
-			<groupId>com.gorillalogic.monkeytalk</groupId>
-			<artifactId>monkeytalk-ant</artifactId>
-			<version>1.0.30</version>
-		</dependency>
-
-    </dependencies>
-	
-	<build>
-	<sourceDirectory>src/js</sourceDirectory>
-		<plugins>
-			
-			<plugin>
-				<groupId>com.photon.phresco.plugins</groupId>
-				<artifactId>hybridAppLauncher-maven-plugin</artifactId>
-				<version>2.1.0.4001-SNAPSHOT</version>
-				<executions>
-					<execution>	
-						<phase>test</phase>
-						<goals>
-							<goal>applaunch</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> 
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <id>run-monkey-tests</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-		                <configuration> 
-							<target name="sample" >
-								<property name="compile_classpath" refid="maven.compile.classpath"/>
-								<property environment="env"/>
-								<property name="ANDROID_HOME" value="${env.ANDROID_HOME}"/> 
-								<taskdef name="run" classname="com.gorillalogic.monkeytalk.ant.RunTask" classpathref="maven.compile.classpath" />
-								 <run agent="AndroidEmulator"
-								  adb="${ANDROID_HOME}/${adb.path}"
-								  script="${basedir}/src/AllTest.mts"
-								  reportdir="${basedir}/target/surefire-reports"
-								   adbSerial="emulator-5554"
-								  thinktime="100"
-								  timeout="5000"
-								  verbose="true" /> 
-							</target>
-							</configuration>
-                    </execution>
-                </executions>
-            </plugin> 
+    <groupId>com.photon.phresco.hybrid.functional</groupId>
+    <artifactId>Robotium4.0-androidhybrid</artifactId>
+    <packaging>apk</packaging>
+    <name>Robotium4.0-androidhybrid</name>
+    <version>2.0</version>
+     <build>
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>do_not_checkin/target/android-classes</outputDirectory>
+        <directory>do_not_checkin/target</directory>
+        <plugins>
+            <plugin>
+                <groupId>com.photon.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>2.2.0.2001</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <run>
+                        <debug>true</debug>
+          </run>
+                    <sdk>
+                        <platform>${android.version}</platform>
+          </sdk>
+                    <extractDuplicates>true</extractDuplicates>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    <androidManifestFile>AndroidManifest.xml</androidManifestFile>
+                    <resourceDirectory>res</resourceDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-	
-	<profiles>
-            <profile>
-                <id>windows-x86</id>
-                <activation>
-                    <os>
-                        <family>Windows</family>
-                    </os>
-                </activation>
-                <properties>
-                     <adb.path>/platform-tools/adb.exe</adb.path>
-                </properties>
-            </profile>
-            <profile>
-                <id>Linux-32bit</id>
-                <activation>
-                    <os>
-                        <family>unix</family>
-                        <name>Linux</name>
-                        <arch>i386</arch>
-                    </os>
-                </activation>
-                <properties>
-                   <adb.path>/platform-tools/adb</adb.path>
-                </properties>
-            </profile>
-            <profile>
-                <id>Linux-64bit</id>
-                <activation>
-                    <os>
-                        <family>unix</family>
-                        <name>Linux</name>
-                        <arch>x64</arch>
-                    </os>
-                </activation>
-                <properties>
-                    <adb.path>/platform-tools/adb</adb.path>
-                </properties>
-            </profile>
-            <profile>
-                <id>mac</id>
-                <activation>
-                    <os>
-                        <family>mac</family>
-                    </os>
-                </activation>
-                <properties>
-                   <adb.path>/platform-tools/adb</adb.path>
-                </properties>
-            </profile>
-        </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android-test</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <scope>provided</scope>
+        </dependency>
+      <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.1</version>
+        </dependency>
+        <dependency>
+			 <groupId>com.jayway.android.robotium</groupId>
+            <artifactId>robotium-solo</artifactId>
+            <version>4.0</version>
+        </dependency>
+		<dependency>
+            <groupId>com.photon.phresco</groupId>
+			<artifactId>Robotium4.0-androidhybrid</artifactId>
+            <version>2.0</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+		<dependency>
+            <groupId>com.photon.phresco</groupId>
+    <artifactId>Robotium4.0-androidhybrid</artifactId>
+            <version>2.0</version>
+            <type>apk</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <properties>
+        <android.version>2.3.3</android.version>
+    </properties>
 </project>
+
