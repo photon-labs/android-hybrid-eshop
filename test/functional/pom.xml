@@ -54,9 +54,9 @@
             <artifactId>robotium-solo</artifactId>
             <version>4.0</version>
         </dependency>
-	
 	</dependencies>
     <properties>
+	    <sonar.language>java</sonar.language>
         <android.version>2.3.3</android.version>
     </properties>
 </project>
