@@ -54,6 +54,7 @@
             <artifactId>robotium-solo</artifactId>
             <version>4.0</version>
         </dependency>
+	
 	</dependencies>
     <properties>
         <android.version>2.3.3</android.version>
