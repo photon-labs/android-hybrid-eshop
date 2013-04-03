@@ -44,7 +44,7 @@
             <version>${android.version}</version>
             <scope>provided</scope>
         </dependency>
-      <dependency>
+		<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.1</version>
@@ -54,22 +54,9 @@
             <artifactId>robotium-solo</artifactId>
             <version>4.0</version>
         </dependency>
-		<dependency>
-            <groupId>com.photon.phresco</groupId>
-			<artifactId>Robotium4.0-androidhybrid</artifactId>
-            <version>2.0</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
-		<dependency>
-            <groupId>com.photon.phresco</groupId>
-    <artifactId>Robotium4.0-androidhybrid</artifactId>
-            <version>2.0</version>
-            <type>apk</type>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+	</dependencies>
     <properties>
+	    <sonar.language>java</sonar.language>
         <android.version>2.3.3</android.version>
     </properties>
 </project>
