@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<environment>
+    
+<text>Please enter valid email id </text>
+<firstname>Renas</firstname>
+<lastname>Redas</lastname>
+<emailid>RenasRedas@gmail.com</emailid>
+<password>renas123</password>
+<phone>123456</phone>
+<company>photoninfotech</company>
+<address1>SivajiGardens</address1>
+<address2>Manapakkam</address2>
+<city>Ramapuram</city>
+<state>TamilNadu</state>
+<country>India</country>
+<postcode>600089</postcode>
+<phonenumber>12345</phonenumber>
+<comments>Should be devliver by within a weak</comments>
+
+
+</environment>
+
