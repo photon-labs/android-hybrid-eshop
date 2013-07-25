@@ -70,9 +70,8 @@ public class LoginVerificationTest extends TestCase {
 					}
 				}
 			   // clicking the Login Button
-			    soloMain.sleep(3000);
+				soloMain.sleep(3000);
 				soloMain.getCurrentWebElements();
-				 
 				soloMain.clickOnMenuItem("Login");
 				soloMain.sleep(2000);
 				// Click The EditTextFied which are in Webview format
@@ -88,15 +87,14 @@ public class LoginVerificationTest extends TestCase {
 		        By pass1=By.id("logpassword");
 		        soloMain.clearTextInWebElement(pass1) ;
 		        soloMain.typeTextInWebElement(pass1, data.PASSWORD); 
-				 soloMain.sleep(2000);
 		        soloMain.clickOnMenuItem("Submit");
-		        
+		        soloMain.takeScreenshot();
 		        soloMain.sleep(2000);
 		        //soloMain.sendKey(Solo.MENU);
 		       // soloMain.clickOnRadioButton(0);		        
 		   }
 		catch (Exception e)
-		{
+		{  soloMain.takeScreenshot();
 			e.printStackTrace();
 		}
 		}
