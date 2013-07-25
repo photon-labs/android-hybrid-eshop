@@ -55,10 +55,7 @@ public class MyCartChekoutTest extends TestCase {
 					}
 				}
 			   // clicking the Login mycart
-			     // clicking the Login Browse
-				soloMain.sleep(3000);
-			    soloMain.getCurrentWebElements();
-				soloMain.clickOnMenuItem("Browse");
+			
 				soloMain.clickOnMenuItem("My Cart");
 				soloMain.sleep(2000);
 				soloMain.clickOnMenuItem("Update Cart");

@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import com.photon.phresco.hybrid.DataJava.UserInfoConstants;
 import android.app.Instrumentation;
 import android.util.Log;
-//import com.jayway.android.robotium.solo.By;
+import com.jayway.android.robotium.solo.By;
 import com.jayway.android.robotium.solo.Solo;
 import com.photon.phresco.hybrid.test.TestException;
 import com.photon.phresco.hybrid.DataJava.AndroidHybridDataJava;
@@ -55,24 +55,55 @@ public class SpecialOffersTest extends TestCase {
 				     }
 					}
 				}
-			   // clicking the Login Special Offers
-			    // clicking the Login Browse
-				soloMain.sleep(3000);
-			    soloMain.getCurrentWebElements();
-				soloMain.clickOnMenuItem("Browse");
-			    soloMain.getCurrentWebElements();
-				soloMain.clickOnMenuItem("Special Offers");
+			// clicking the Login Browse
+			soloMain.sleep(3000);
+		    soloMain.getCurrentWebElements();
+			soloMain.clickOnMenuItem("Browse");
+			soloMain.sleep(2000);
+			
+			soloMain.getCurrentWebElements();
+			soloMain.clickOnMenuItem("Special Offers");
+			soloMain.sleep(2000);
+			soloMain.clickOnMenuItem("LED TV");
+			soloMain.sleep(3000);	
+			
+			soloMain.getCurrentWebElements();
+			
+				By Addtocart=By.id("Addtocart");
+				soloMain.clickOnWebElement(Addtocart); 
+				soloMain.goBack();
+				
 				soloMain.sleep(2000);
-				// choosing cart to add
 				soloMain.getCurrentWebElements();
-				soloMain.clickOnMenuItem("BlackBerry Torch 9800 ");
+				By checkout=By.id("checkoutid");
+				soloMain.clickOnWebElement(checkout);
+				soloMain.sleep(2000);
 				
-				// add cart to list
-				soloMain.getCurrentWebElements();
-				soloMain.clickOnMenuItem("Add to Cart");			
-				
-			   
-		   }
+				By email=By.id("email");
+			    soloMain.clearTextInWebElement(email) ;
+			    soloMain.typeTextInWebElement(email, data.EMAILID); 
+			    
+			    soloMain.getCurrentWebElements();
+				soloMain.clickOnText("Delivery Information");
+				By Firstname=By.id("deliveryfirstname");
+			    soloMain.clearTextInWebElement(Firstname) ;
+			    soloMain.typeTextInWebElement(Firstname, android.FIRSTNAME);
+			    
+			    soloMain.getCurrentWebElements();
+			    By LastName=By.id("deliverylastname");
+			    soloMain.clearTextInWebElement(LastName) ;
+			    soloMain.typeTextInWebElement(LastName, android.LASTNAME);
+			    
+			    soloMain.getCurrentWebElements();
+			    By CompanyName=By.id("deliverycompany");
+			    soloMain.clearTextInWebElement(CompanyName) ;
+			    soloMain.typeTextInWebElement(CompanyName, android.LASTNAME);
+			    
+			    soloMain.getCurrentWebElements();
+			    By address1=By.id("deliveryaddress1");
+			    soloMain.clearTextInWebElement(address1) ;
+			    soloMain.typeTextInWebElement(address1, android.ADDRESS1);
+		}
 		catch (Exception e)
 		{
 			e.printStackTrace();

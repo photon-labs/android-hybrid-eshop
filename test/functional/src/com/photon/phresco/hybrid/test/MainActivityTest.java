@@ -1,5 +1,6 @@
 package com.photon.phresco.hybrid.test;
 import android.test.ActivityInstrumentationTestCase2;
+
 import android.test.suitebuilder.annotation.Smoke;
 import com.jayway.android.robotium.solo.By;
 import android.util.Log;
@@ -11,6 +12,11 @@ import com.photon.phresco.hybrid.test.RegistrationTest;
 import com.photon.phresco.hybrid.test.BrowseVerificationTest;
 import com.photon.phresco.hybrid.test.SpecialOffersTest;
 import com.photon.phresco.hybrid.test.MyCartChekoutTest;
+import com.photon.phresco.hybrid.test.MobilePhonesTest;
+import com.photon.phresco.hybrid.test.AudioDevicesVerificationTest;
+import com.photon.phresco.hybrid.test.CamarasVerificationTest;
+import com.photon.phresco.hybrid.test.TabletsVerificationTest;
+import com.photon.phresco.hybrid.test.MoviesandMusicVerificationTest;
 import com.photon.phresco.hybrid.test.TestException;
 import com.jayway.android.robotium.solo.WebElement;
 import android.widget.EditText;
@@ -31,6 +37,12 @@ private RegistrationTest rigsterTest;
 private BrowseVerificationTest browsetest;
 private MyCartChekoutTest Mycarttest;
 private SpecialOffersTest specialtest;
+private MobilePhonesTest mobile;
+private AudioDevicesVerificationTest audio;
+private CamarasVerificationTest camaras;
+private TabletsVerificationTest tablet;
+private MoviesandMusicVerificationTest movies;
+
 
 static {
 	try {
@@ -70,8 +82,8 @@ public void testValidationLogin() throws TestException {
 		Log.e(TAG, Log.getStackTraceString(e));
 	}
 
-} 
- @Smoke
+}
+@Smoke
 public void testVerificationLogin() throws TestException {
 
 	try {
@@ -87,7 +99,7 @@ public void testVerificationLogin() throws TestException {
 	}
 
 }
- @Smoke
+@Smoke
 public void testRegistration() throws TestException {
 
 	try {
@@ -102,8 +114,88 @@ public void testRegistration() throws TestException {
 		Log.e(TAG, Log.getStackTraceString(e));
 	}
 
-} 
+}
 
+@Smoke
+public void testMobilePhones() throws TestException {
+
+	try {
+		Log.i(TAG, "testMobilePhones---------Start");
+		// creating object of the testclass testBrowseVerification class
+		mobile = new MobilePhonesTest(soloMain);
+		// calling the test method
+		mobile.testMobilePhones(getInstrumentation());
+		Log.i(TAG, "testMobilePhones---------End");
+
+	} catch (TestException e) {
+		Log.e(TAG, Log.getStackTraceString(e));
+	}
+
+}
+@Smoke
+public void testAudioDevicesVerificationTest() throws TestException {
+
+	try {
+		Log.i(TAG, "testAudioDevicesVerificationTest---------Start");
+		// creating object of the testclass testBrowseVerification class
+		audio = new AudioDevicesVerificationTest(soloMain);
+		// calling the test method
+		audio.testAudioDevicesVerificationTest(getInstrumentation());
+		Log.i(TAG, "testAudioDevicesVerificationTest---------End");
+
+	} catch (TestException e) {
+		Log.e(TAG, Log.getStackTraceString(e));
+	}
+
+}
+@Smoke
+public void testCamarasVerificationTest() throws TestException {
+
+	try {
+		Log.i(TAG, "testCamarasVerificationTest---------Start");
+		// creating object of the testclass testBrowseVerification class
+		camaras = new CamarasVerificationTest(soloMain);
+		// calling the test method
+		camaras.testCamarasVerificationTest(getInstrumentation());
+		Log.i(TAG, "testCamarasVerificationTest---------End");
+
+	} catch (TestException e) {
+		Log.e(TAG, Log.getStackTraceString(e));
+	}
+
+}
+@Smoke
+public void testTabletsVerificationTest() throws TestException {
+
+	try {
+		Log.i(TAG, "testTabletsVerificationTest---------Start");
+		// creating object of the testclass testBrowseVerification class
+		tablet = new TabletsVerificationTest(soloMain);
+		// calling the test method
+		tablet.testTabletsVerificationTest(getInstrumentation());
+		Log.i(TAG, "testTabletsVerificationTest---------End");
+
+	} catch (TestException e) {
+		Log.e(TAG, Log.getStackTraceString(e));
+	}
+
+}
+@Smoke
+public void testMoviesandMusicVerificationTest() throws TestException {
+
+	try {
+		Log.i(TAG, "testMoviesandMusicVerificationTest---------Start");
+		// creating object of the testclass testBrowseVerification class
+		movies = new MoviesandMusicVerificationTest(soloMain);
+		// calling the test method
+		movies.testMoviesandMusicVerificationTest(getInstrumentation());
+		Log.i(TAG, "testMoviesandMusicVerificationTest---------End");
+
+	} catch (TestException e) {
+		Log.e(TAG, Log.getStackTraceString(e));
+	}
+
+}
 @Smoke
 public void testBrowseVerification() throws TestException {
 
@@ -121,7 +213,7 @@ public void testBrowseVerification() throws TestException {
 
 }
 
-/* @Smoke
+@Smoke
 public void testSpecialOffersTest() throws TestException {
 
 	try {
@@ -137,7 +229,7 @@ public void testSpecialOffersTest() throws TestException {
 	}
 
 }
-@Smoke
+/*@Smoke
 public void testMyoffersTest() throws TestException {
 
 	try {
@@ -152,8 +244,8 @@ public void testMyoffersTest() throws TestException {
 		Log.e(TAG, Log.getStackTraceString(e));
 	}
 
-}   */
-@Override 
+}*/
+@Override
 protected void tearDown() throws Exception {
 
 	soloMain.finishOpenedActivities();

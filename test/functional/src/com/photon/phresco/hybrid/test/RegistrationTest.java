@@ -50,6 +50,7 @@ public class RegistrationTest extends TestCase {
 					}
 				}
 			// Get the current WebViewElements
+			soloMain.sleep(3000);
 			soloMain.getCurrentWebElements();
 			// clicking the Browse Button
 	        soloMain.clickOnMenuItem("Register");
@@ -73,10 +74,11 @@ public class RegistrationTest extends TestCase {
 	        By Phonenumber =By.id("regphonenumber");
 	        soloMain.typeTextInWebElement(Phonenumber, android.PHONE);
 	        soloMain.getCurrentWebElements();
+	        soloMain.takeScreenshot();
 	       // soloMain.clickOnMenuItem("Register");
 		   }
 		catch (Exception e)
-		{
+		{   soloMain.takeScreenshot();
 			e.printStackTrace();
 		}
 		}

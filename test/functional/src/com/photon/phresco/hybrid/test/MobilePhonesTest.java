@@ -11,7 +11,7 @@ import com.jayway.android.robotium.solo.Solo;
 //import com.jayway.android.robotium.solo.WebElement;
 import com.photon.phresco.hybrid.test.TestException;
 import com.photon.phresco.hybrid.DataJava.AndroidHybridDataJava;
-public class BrowseVerificationTest extends TestCase {
+public class MobilePhonesTest extends TestCase {
 
 	private Solo soloMain;
 	private String activityName;
@@ -19,18 +19,18 @@ public class BrowseVerificationTest extends TestCase {
 	//private By by;
 	private AndroidHybridDataJava android;
 	
-	private static final String TAG = "*****BrowseVerificationTest******";
+	private static final String TAG = "*****MobilePhoneVerificationTest******";
 	
 	
-	public BrowseVerificationTest(Solo solo) {
+	public MobilePhonesTest(Solo solo) {
 		this.soloMain = solo;
 
 	}
 @SuppressWarnings("unused")
-	public void testBrowseVerification(Instrumentation instrumentation)
+	public void testMobilePhones(Instrumentation instrumentation)
 			throws TestException {
 		try{
-			Log.i(TAG, "------It is testBrowseVerificationTest()-----------");
+			Log.i(TAG, "------It is testMobilePhones()-----------");
 			android=new AndroidHybridDataJava();
 			android.parser(instrumentation.getContext());
 			data=new UserInfoConstants();
@@ -38,7 +38,7 @@ public class BrowseVerificationTest extends TestCase {
 			activityName = soloMain.getCurrentActivity().getClass().getSimpleName();
 			if(activityName.equalsIgnoreCase("Browse"))
 			  {
-				Log.i(TAG, "------It is testBrowseVerificationTest-----------" + activityName);
+				Log.i(TAG, "------It is testMobilePhones-----------" + activityName);
 				soloMain.waitForActivity("Browse", 2000);
 				for (int i = 0; i < 40; i++) 
 				    {
@@ -51,7 +51,7 @@ public class BrowseVerificationTest extends TestCase {
 					   }
 				
 				else {
-					Log.i(TAG, "------ testBrowseVerificationTest failed-----------");
+					Log.i(TAG, "------ testMobilePhones failed-----------");
 					throw new TestException("Current Activity Failed----"
 							+ soloMain.getCurrentActivity().getClass()
 									.getSimpleName() + "failed");
@@ -65,11 +65,11 @@ public class BrowseVerificationTest extends TestCase {
 				soloMain.sleep(2000);
 				
 				soloMain.getCurrentWebElements();
-				soloMain.clickOnMenuItem("Television");
+				soloMain.clickOnMenuItem("Mobile Phones");
 				
 				soloMain.getCurrentWebElements();
 				soloMain.sleep(2000);
-				soloMain.clickOnMenuItem("LG Electronics 42PW350 3D Plasma HDTV");
+				soloMain.clickOnMenuItem("BlackBerry Bold 9780");
 				soloMain.sleep(3000);
 				//soloMain.getCurrentWebElements();
 				
@@ -109,7 +109,7 @@ public class BrowseVerificationTest extends TestCase {
 			    soloMain.clearTextInWebElement(address1) ;
 			    soloMain.typeTextInWebElement(address1, android.ADDRESS1);
 			    
-			  /*   soloMain.getCurrentWebElements();
+			   /* soloMain.getCurrentWebElements();
 			    By address2=By.id("deliveryaddress2");
 			    soloMain.clearTextInWebElement(address2) ;
 			    soloMain.typeTextInWebElement(address2, android.ADDRESS2);
@@ -196,7 +196,7 @@ public class BrowseVerificationTest extends TestCase {
 			    soloMain.clickOnMenuItem("Review Order");
 			    soloMain.takeScreenshot();
 			    soloMain.sleep(2000);
-			    */ 
+			    */
 				      
 		   }
 		catch (Exception e)
