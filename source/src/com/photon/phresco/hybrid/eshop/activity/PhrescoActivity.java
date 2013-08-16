@@ -53,10 +53,9 @@ public class PhrescoActivity extends DroidGap {
 	private static final String TAG = "PhrescoActivity  *********** ";
 		
 	
-	private static final String SERVER_CONFIG_NAME = "Native_Server";
+	
 	private static final String SERVER = "Server";
-	/*private static final String WEBSERVICE_CONFIG_NAME = "Native_Eshop";
-	private static final String WEB_SERVICE = "WebService";*/
+	
 
 	private String protocol = "protocol";
 	private String host = "host";
@@ -95,12 +94,15 @@ public class PhrescoActivity extends DroidGap {
 //				properties = configuration.getProperties();
 
 				if (envType.equalsIgnoreCase("webservice")) {
-					/*String configJsonString = confReaderObj.getConfigAsJSON(envName, WEB_SERVICE, WEBSERVICE_CONFIG_NAME);
+				   /* String configName = configuration.getName();
+				    String configJsonString = confReaderObj.getConfigAsJSON(envName, WEB_SERVICE, configName);
 					getWebServiceURL(configJsonString);*/
-				} else if (envType.equalsIgnoreCase("server")) {					
-					String configJsonString = confReaderObj.getConfigAsJSON(envName, SERVER, SERVER_CONFIG_NAME);
+				} else if (envType.equalsIgnoreCase("server")) {	
+					String configName = configuration.getName();
+					String configJsonString = confReaderObj.getConfigAsJSON(envName, SERVER, configName);
 					getServerURL(configJsonString);
 				}
+
 
 			}
 
@@ -124,36 +126,7 @@ public class PhrescoActivity extends DroidGap {
 		}
 	}
 
-	/*private void getWebServiceURL(String configJsonString) {
-		try {
-			JSONObject jsonObject = new JSONObject(configJsonString);
-			String webServiceProtocol = jsonObject.getString(protocol).endsWith("://") ? jsonObject.getString(protocol) : jsonObject.getString(protocol) + "://"; // http://
-
-			String webServiceHost = jsonObject.getString(port).equalsIgnoreCase("") 
-					? (jsonObject.getString(host).endsWith("/") 
-								? jsonObject.getString(host): jsonObject.getString(host) + "/")	
-					: jsonObject.getString(host); // localhost/
-													// localhost
-
-			String webServicePort = jsonObject.getString(port).equalsIgnoreCase("") 
-					? "" : (jsonObject.getString(port).startsWith(":") 
-								? jsonObject.getString(port) : ":" + jsonObject.getString(port)); // ""
-																						// (blank)
-																						// :1313
-
-			String webServiceContext = jsonObject.getString(context).startsWith("/") 
-					? jsonObject.getString(context) : "/"	+ jsonObject.getString(context); // /phresco
-
-			Constants.setWebContextURL(webServiceProtocol + webServiceHost
-					+ webServicePort + webServiceContext + "/");
-			Constants.setRestAPI(Constants.REST_API);
-			PhrescoLogger.info(TAG + "getWebServiceURL() - Constants.webContextURL : "
-					+ Constants.getWebContextURL() + Constants.getRestAPI());
-		} catch (JSONException e) {
-			PhrescoLogger.info(TAG + " EnvConstuctor -  Exception " + e.toString());
-			PhrescoLogger.warning(e);
-		}
-	}*/
+	
 	
 	/*
 	 * Don't Remove this method
