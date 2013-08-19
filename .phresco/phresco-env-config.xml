@@ -1,0 +1,10 @@
+<environments>
+    <environment default="true" desc="Production Environment is used for Development purpose only" name="Production">
+        <Server desc="Server Configuration for Android Hybrid Eshop application" name="Native_Server">
+            <port>4040</port>
+            <context>mobilewidget</context>
+            <host>localhost</host>
+            <protocol>http</protocol>
+        </Server>
+    </environment>
+</environments>
