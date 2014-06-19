@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.photon.phresco.functional</groupId>
-    <artifactId>Robotium4.0-androidhybrid</artifactId>
+    <artifactId>android-hybrid-eshop-func</artifactId>
     <packaging>apk</packaging>
     <name>Robotium4.0-androidhybrid</name>
     <version>2.0</version>
