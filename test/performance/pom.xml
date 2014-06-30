@@ -5,7 +5,7 @@
     <artifactId>Robotium4.0-androidhybrid</artifactId>
     <packaging>apkperf</packaging>
     <name>Robotium4.0-androidhybrid</name>
-    <version>2.0</version>
+    <version>3.3.1.16001-SNAPSHOT</version>
     <build>
         <sourceDirectory>src</sourceDirectory>
         <outputDirectory>do_not_checkin/target/android-classes</outputDirectory>
